@@ -19,11 +19,10 @@ function App() {
 
     try {
       // Make sure your server is running on port 5000!
-      const response = await fetch('http://localhost:5000/upload', {
-        method: 'POST',
-        body: formData,
-      });
-
+    const response = await fetch('/upload', { // שימוש בנתיב יחסי עובד הכי טוב כששניהם על אותו שרת
+      method: 'POST',
+      body: formData,
+    });
       if (!response.ok) throw new Error('Analysis failed');
 
       const result = await response.json();

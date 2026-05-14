@@ -48,3 +48,15 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`7. SERVER READY: Listening on port ${PORT}`);
 });
+
+const path = require('path');
+
+// 1. הגדרת תיקיית ה-build של React
+// אנחנו עולים תיקייה אחת למעלה מהשרת ואז נכנסים ל-client/build
+const buildPath = path.join(__dirname, "../../client/build");
+app.use(express.static(buildPath));
+
+// 2. טיפול בכל בקשה שלא קשורה ל-API (כדי ש-React יטען)
+app.get("*", (req, res) => {
+    res.sendFile(path.join(buildPath, "index.html"));
+});
