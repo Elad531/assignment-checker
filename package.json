@@ -1,0 +1,7 @@
+{
+  "name": "grading-app-meta",
+  "scripts": {
+    "start": "node grading-app/server/index.js",
+    "build": "cd grading-app/client && npm install && npm run build"
+  }
+}
